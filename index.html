@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <title>现金转不停</title>
-    <link href="css/mui.min.css" rel="stylesheet">
-    <link href="css/component.css" rel="stylesheet" type="text/css">
+    <!--<link href="css/mui.min.css" rel="stylesheet">-->
+    <!--<link href="css/component.css" rel="stylesheet" type="text/css">-->
     <link href="css/award.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/animate.min.css">
 </head>
 <body style="">
-<input type="hidden" name="gamed" id="gamed" value="{{gamed}}">
+<input type="hidden" name="gamed" id="gamed" value="9">
 <input type="hidden" name="gameState" id="gameState" value="{{gameState}}">
 <input type="hidden" name="cardCode" id="cardCode" value="{{cardCode}}">
 <input type="hidden" name="mId" id="mId" value="{{mId}}">
@@ -80,6 +80,7 @@
 
 <script>
     $(function(){
+        console.log($('#gamed').val());
         $("img").on("click",function(){
             return false;
         });

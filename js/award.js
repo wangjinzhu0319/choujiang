@@ -116,6 +116,7 @@ $(document).ready(function(){
 	
 	/********抽奖开始**********/
 	$('#tupBtn').click(function (){
+		console.log($('#gamed').val());
 		var gamed = $("#gamed").val();
 		var gameState = $("#gameState").val();
 		var cardCode = $("#cardCode").val();
