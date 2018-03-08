@@ -1,93 +1,206 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <title>现金转不停</title>
-    <!--<link href="css/mui.min.css" rel="stylesheet">-->
-    <!--<link href="css/component.css" rel="stylesheet" type="text/css">-->
-    <link href="css/award.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+<head>
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+	<title>抽奖</title>
+	<style type="text/css">
+		.qimo8{ overflow:hidden;}
+		.qimo8 .qimo {/*width:99999999px;*/width:8000%;}
+		.qimo8 .qimo div{ float:left;}
+		.qimo8 .qimo ul{float:left;overflow:hidden; zoom:1; }
+		.qimo8 .qimo ul li{float:left; list-style:none; font-size: 0.24rem;margin: 0 1rem;}
+	</style>
+	<link rel="stylesheet" type="text/css" href="./css/styleCJ.css"/>
+	<script src="js/common.js"></script>
 </head>
-<body style="">
-<input type="hidden" name="gamed" id="gamed" value="9">
-<input type="hidden" name="gameState" id="gameState" value="{{gameState}}">
-<input type="hidden" name="cardCode" id="cardCode" value="{{cardCode}}">
-<input type="hidden" name="mId" id="mId" value="{{mId}}">
-<!-------------抽奖页面-------------->
-<div class="ml-main" id="ml-main">
-    <img class="main_back" src="img/back.png">
-    <img class="animated zoomIn img_2_1" src="img/img_1.png">
-    <img class="animated bounceIn img_2_2" src="img/img_2.png">
-    <div class="kePublic">
-        <!--转盘效果开始-->
-        <div style="margin:0 auto">
-            <div class="banner">
-                <div class="turnplate" style="background-image:url(img/turnplate-bg_2.png);background-size:100% 100%;font-size:24px !important;">
-                    <canvas class="item" id="wheelcanvas" width="516" height="516"></canvas>
-                    <img id="tupBtn" class="pointer" src="img/turnplate-pointer_2.png">
-                </div>
-            </div>
-        </div>
-        <!--转盘效果结束-->
-        <div class="clear"></div>
-    </div>
-    <img class="bottom_shadow" src="img/bottom_shadow.png">
-    <img class="animated zoomIn kePublic_back" src="img/back1.png">
-
-    <!--------------滚动中奖纪录---------------->
-    <div class="record_line" id="Marquee">
-        <div id="">
-            恭喜  159****3540  的用户抽中  <span id="gift_coupon">200元现金代金券</span>
-        </div>
-        <div id="">
-            恭喜  159****3540  的用户抽中  <span id="gift_coupon">200元现金代金券</span>
-        </div>
-    </div>
-    <!-------------底部声明-------------->
-    <img class="rule_title" src="img/rule_title.png">
-    <div class="rule_text">
-        点击转盘进行抽奖，每人每天可以抽奖一次。<br>
-        分享还可以再获得一次抽奖机会，抽中的奖品券可以进行核销兑换。
-    </div>
+<body>
+<div class="shanDeng" id="deng">
+	<div id="luck"><!-- luck -->
+		<table style="border-spacing:.08rem .03rem;">
+			<tr>
+				<td class="luck-unit luck-unit-0"><img src="./img/01.png"></td>
+				<td class="luck-unit luck-unit-1"><img src="./img/02.png"></td>
+				<td class="luck-unit luck-unit-2"><img src="./img/03.png"></td>
+			</tr>
+			<tr>
+				<td class="luck-unit luck-unit-7"><img src="./img/05.png"></td>
+				<td class="cjBtn" id="btn"></td>
+				<td class="luck-unit luck-unit-3"><img src="./img/01.png"></td>
+			</tr>
+			<tr>
+				<td class="luck-unit luck-unit-6"><img src="./img/02.png"></td>
+				<td class="luck-unit luck-unit-5"><img src="./img/04.png"></td>
+				<td class="luck-unit luck-unit-4"><img src="./img/03.png"></td>
+			</tr>
+		</table>
+	</div><!-- luckEnd -->
 </div>
 
-<!-------------中奖弹窗页面-------------->
-<div class="zj-main" id="zj-main">
-    <div class="txzl">
-        <div class="zj_text">
-            中奖啦<br>恭喜获得<span id="jiangpin"></span>一份<br>可在我的券包中查看
-        </div>
-        <div class="close_zj">关闭</div>
-    </div>
+
+<div class="rule">
+	<p>抽奖活动规则</p>
+	<p>1、单次加油满200元,可抽奖一次;</p>
+	<p>2、各种奖券使用规则详见该奖券的使用说明;</p>
+	<p>3、奖券请在有效期内使用或者分享给其他朋友,过期无效</p>
 </div>
 
-<!-------------谢谢参与弹窗-------------->
-<div class="xxcy-main" id="xxcy-main">
-    <div class="xxcy">
-        <div class="xxcy_text">
-            很遗憾<br>没有抽中礼品
-        </div>
-        <div class="close_xxcy">关闭</div>
-    </div>
+<div class="play">
+	<span></span><div class="div">
+	<div id="demo" class="qimo8">
+		<div class="qimo">
+			<div id="demo1">
+				<ul>
+					<li>某某某获得一等奖</li>
+					<li>某某某获得四等奖</li>
+					<li>某某某获得三等奖</li>
+					<li>某某某获得二等奖</li>
+					<li>某某某获得四等奖</li>
+					<li>某某某获得三等奖</li>
+					<li>某某某获得二等奖</li>
+					<li>某某某获得三等奖</li>
+				</ul>
+			</div>
+			<div id="demo2"></div>
+		</div>
+	</div>
+</div>
 </div>
 
-<script src="https://cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
-<!--<script type="text/javascript" src="js/miu.js"></script>-->
-<script type="text/javascript" src="js/awardRotate.js"></script>
-<!--<script type="text/javascript" src="js/main.js"></script>-->
-<script type="text/javascript" src="js/award.js"></script>
+	<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 
-<script>
-    $(function(){
-        console.log($('#gamed').val());
-        $("img").on("click",function(){
-            return false;
-        });
-        /*document.addEventListener("WeixinJSBridgeReady",function(){
-            WeixinJSBridge.call('hideOptionMenu');
-        });*/
-    });
-</script>
+	<script>
+		var luck={
+			index:7,	//当前转动到哪个位置，起点位置
+			count:0,	//总共有多少个位置
+			timer:0,	//setTimeout的ID，用clearTimeout清除
+			speed:0,	//初始转动速度
+			times:0,	//转动次数
+			cycle:50,	//转动基本次数：即至少需要转动多少次再进入抽奖环节
+			prize:-1,	//中奖位置
+			init:function(id){
+				if ($("#"+id).find(".luck-unit").length>0) {
+					$luck = $("#"+id);
+					$units = $luck.find(".luck-unit");
+					this.obj = $luck;
+					this.count = $units.length;
+					$luck.find(".luck-unit-"+this.index).addClass("active");
+				};
+			},
+			roll:function(){
+				var index = this.index;
+				var count = this.count;
+				var luck = this.obj;
+				$(luck).find(".luck-unit-"+index).removeClass("active");
+				index += 1;
+				if (index>count-1) {
+					index = 0;
+				};
+				$(luck).find(".luck-unit-"+index).addClass("active");
+				this.index=index;
+				return false;
+			},
+			stop:function(index){
+				this.prize=index;
+				return false;
+			}
+		};
+
+
+		function roll(){
+			luck.times += 1;
+			luck.roll();
+
+			if (luck.times > luck.cycle+10 && luck.prize==luck.index) {
+				clearTimeout(luck.timer);
+				luck.prize=-1;
+				luck.times=0;
+				click=false;
+				setTimeout(function () {
+					alert('感谢参与');//中奖提示
+					luck.speed=0
+
+				},1000)
+			}else{
+				if (luck.times<luck.cycle) {
+					luck.speed -= 10;
+				}else if(luck.times==luck.cycle) {
+//					var index = Math.random()*(luck.count)|0;
+                    /*if(index>5){
+                        index = 7;
+					}else {
+                        index = 5;
+					}*/
+                    luck.prize = 7;//最终中奖位置
+
+				}else{
+					if (luck.times > luck.cycle+10 && ((luck.prize==0 && luck.index==7) || luck.prize==luck.index+1)) {
+						luck.speed += 110;
+					}else{
+						luck.speed += 20;
+					}
+				}
+				if (luck.speed<40) {
+					luck.speed=40;
+				};
+
+				luck.timer = setTimeout(roll,luck.speed);
+			}
+
+			return false;
+		}
+
+
+		var click=false;
+		window.onload=function(){
+			luck.init('luck');
+			num=1;
+			$("#btn").click(function(){
+				/*//按下弹起效果
+				$("#btn").addClass("cjBtnDom");
+				setTimeout(function(){	
+					$("#btn").removeClass("cjBtnDom");
+				},200);*/
+
+				if(num>0){
+					if(click) {
+						return false;
+					}
+					else{
+						num--;
+						luck.speed=100;
+						roll();
+						click=true;
+
+						return false;
+					}
+				}else{
+					if(luck.speed!=0){
+						click=true;
+					}else{
+						alert('抽奖次数没了')
+					}
+				}
+
+
+			});
+		};
+		//播报
+        var demo = document.getElementById("demo");
+
+        var demo1 = document.getElementById("demo1");
+        var demo2 = document.getElementById("demo2");
+        demo2.innerHTML=document.getElementById("demo1").innerHTML;
+        function Marquee(){
+            if(demo.scrollLeft-demo2.offsetWidth>=0){
+                demo.scrollLeft-=demo1.offsetWidth;
+            }
+            else{
+                demo.scrollLeft++;
+            }
+        }
+
+	</script>
 </body>
 </html>
